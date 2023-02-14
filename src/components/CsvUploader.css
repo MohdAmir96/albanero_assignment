@@ -1,0 +1,74 @@
+
+.edit_modal {
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 20px;
+    position: absolute;
+    top: 30vh;
+    background: black;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.csv-upload-container{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   position: relative;
+   
+}
+
+
+
+/* CSS */
+.btn {
+  align-items: center;
+  background-clip: padding-box;
+  background: #353836;
+  padding: 8px 19px;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1rem;
+  /* color: black !important; */
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  justify-content: center;
+  margin: 0;
+  /* font-size: 1rem; */
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #2a2c2b;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  background-color: #187018;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+table{
+    width: 90vw;
+    border-collapse: collapse;
+}
+td,th,tr{
+    border: 1px solid;
+    text-align: center;
+    padding: 5px;
+}
