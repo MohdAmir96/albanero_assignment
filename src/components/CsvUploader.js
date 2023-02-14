@@ -31,13 +31,29 @@ function CsvUploader() {
   return (
     <div className="csv-upload-container">
       <h2>CSV Uploader</h2>
-      <div style={{ width: "95%" }}>
+      <div
+        style={{
+          width: "95%",
+          display: "flex",
+          justifyContent: "space-around",
+          marginBottom: "10px",
+        }}
+      >
         <input
           style={{ marginBottom: "20px" }}
           type="file"
           accept=".csv"
           onChange={handleFileUpload}
         />
+        {showDownloadBtn && (
+          <button
+            style={{ marginTop: "20px" }}
+            className="btn"
+            onClick={handleDownload}
+          >
+            Download CSV
+          </button>
+        )}
       </div>
 
       {
@@ -78,15 +94,6 @@ function CsvUploader() {
               </tr>
             ))}
           </tbody>
-          {showDownloadBtn && (
-            <button
-              style={{ marginTop: "20px" }}
-              className="btn"
-              onClick={handleDownload}
-            >
-              Download CSV
-            </button>
-          )}
         </table>
       }
 
