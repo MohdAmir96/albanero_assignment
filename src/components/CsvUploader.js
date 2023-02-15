@@ -52,7 +52,7 @@ function CsvUploader() {
         {loading && (
           <>
             <div style={{ position: "absolute", top: "100px", scale: "1.5" }}>
-              <CircularProgress />
+             <CircularProgress color="success" />
             </div>
           </>
         )}
