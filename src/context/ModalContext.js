@@ -9,19 +9,32 @@ function ModalProvider({ children }) {
   const [modalData, setModalData] = useState({});
   const [showDownloadBtn, setShownLoadBtn] = useState(false);
   const [loading, setLoading] = useState(false);
-  const handleFileUpload = (e) => {
+  const handleFileUpload = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
-    Papa.parse(file, {
-      header: true,
-      complete: (results) => {
-        console.log(results.data);
-        setData(results.data);
-        setHeaders(Object.keys(results.data[0]));
-      },
-    });
-    setShownLoadBtn(true);
-    setLoading(false);
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = (event) => {
+      const csvData = event.target.result;
+      const rows = csvData.split("\n");
+      const headers = rows[0].split(",");
+      const data = [];
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].split(",");
+        if (row.length === headers.length) {
+          const obj = {};
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j]] = row[j];
+          }
+          data.push(obj);
+        }
+      }
+      console.log(data);
+      setData(data);
+      setHeaders(headers);
+      setShownLoadBtn(true);
+      setLoading(false);
+    };
   };
 
   const handleDownload = () => {
