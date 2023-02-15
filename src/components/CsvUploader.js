@@ -3,6 +3,8 @@ import "./CsvUploader.css";
 import { useModalContext } from "../context/ModalContext";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import CircularProgress from '@mui/material/CircularProgress';
+
 function CsvUploader() {
   const [headerEdit, setHeaderEdit] = useState(false);
 
@@ -25,6 +27,8 @@ function CsvUploader() {
     handleSave,
     showDownloadBtn,
     handleHeaderEdit,
+    loading,
+    progress,
   } = useModalContext();
   console.log(">>>>>>>>", headers);
 
@@ -45,6 +49,13 @@ function CsvUploader() {
           accept=".csv"
           onChange={handleFileUpload}
         />
+        {loading && (
+          <>
+            <div style={{ position: "absolute", top: "100px", scale: "1.5" }}>
+              <CircularProgress />
+            </div>
+          </>
+        )}
         {showDownloadBtn && (
           <button
             style={{ marginTop: "20px" }}
