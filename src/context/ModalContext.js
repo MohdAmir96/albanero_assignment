@@ -9,6 +9,7 @@ function ModalProvider({ children }) {
   const [modalData, setModalData] = useState({});
   const [showDownloadBtn, setShownLoadBtn] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
   const handleFileUpload = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
@@ -34,6 +35,18 @@ function ModalProvider({ children }) {
       setHeaders(headers);
       setShownLoadBtn(true);
       setLoading(false);
+    };
+
+    reader.onerror = (error) => {
+      console.error(error);
+      setLoading(false);
+    };
+
+    reader.onprogress = (event) => {
+      if (event.lengthComputable) {
+        const progress = (event.loaded / event.total) * 100;
+        setProgress(progress);
+      }
     };
   };
 
@@ -114,6 +127,7 @@ function ModalProvider({ children }) {
         showDownloadBtn,
         handleHeaderEdit,
         loading,
+        progress,
       }}
     >
       {children}
